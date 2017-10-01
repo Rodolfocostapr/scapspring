@@ -2,7 +2,6 @@ package br.nemo.ufes.scap.Persistency;
 
 import java.util.Calendar;
 
-import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -11,7 +10,6 @@ import javax.persistence.QueryTimeoutException;
 
 import br.nemo.ufes.scap.Domain.Mandato;
 
-@Model
 public class JPAmandatoDAO extends JPABaseDAO<Mandato> implements MandatoDAO {
 
 	@PersistenceContext

@@ -2,8 +2,6 @@ package br.nemo.ufes.scap.Application;
 
 import java.util.List;
 
-import javax.enterprise.inject.Model;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -17,7 +15,6 @@ import br.nemo.ufes.scap.Domain.TipoAfastamento;
 import br.nemo.ufes.scap.Persistency.AfastamentoDAO;
 import br.nemo.ufes.scap.Persistency.PessoaDAO;
 
-@Model
 public class AplAfastamentoImp implements AplAfastamento {
 
 	@Autowired
