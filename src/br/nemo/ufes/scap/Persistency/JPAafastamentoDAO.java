@@ -10,9 +10,11 @@ import javax.persistence.Query;
 import javax.persistence.QueryTimeoutException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.nemo.ufes.scap.Domain.Afastamento;
 
+@Service("afastamentoDAO")
 public class JPAafastamentoDAO extends JPABaseDAO<Afastamento> implements AfastamentoDAO {
 
 	@PersistenceContext

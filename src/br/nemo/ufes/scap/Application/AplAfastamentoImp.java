@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 import br.nemo.ufes.scap.Domain.Afastamento;
 import br.nemo.ufes.scap.Domain.Onus;
@@ -15,6 +16,7 @@ import br.nemo.ufes.scap.Domain.TipoAfastamento;
 import br.nemo.ufes.scap.Persistency.AfastamentoDAO;
 import br.nemo.ufes.scap.Persistency.PessoaDAO;
 
+@Service("aplAfastamento")
 public class AplAfastamentoImp implements AplAfastamento {
 
 	@Autowired
@@ -31,9 +33,8 @@ public class AplAfastamentoImp implements AplAfastamento {
 	// }
 
 	@Override
-	@PreAuthorize("hasRole('ROLE_PROF')")
 	public void testeRoleProf() {
-
+		System.out.println("testeRoleProf");
 	}
 
 	@Override

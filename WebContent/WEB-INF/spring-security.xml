@@ -5,10 +5,11 @@
           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security-4.2.xsd">
- 
+          
+  	<global-method-security pre-post-annotations="enabled"/>
     <http auto-config='true'>
-    	<intercept-url pattern="/login*" access="permitAll" />
-        <intercept-url pattern="/*" access="hasRole('ROLE_USER')" />
+    	<intercept-url pattern="/login" access="permitAll" />
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
         <form-login 
 		   login-page="/login" 
 		   login-processing-url="/applogin"
@@ -19,7 +20,7 @@
 		   logout-url="/logout" 
 		   logout-success-url="/ok"/>
     </http>
- 
+
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
