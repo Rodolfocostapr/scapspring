@@ -9,8 +9,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.QueryTimeoutException;
 
+import org.springframework.stereotype.Service;
+
 import br.nemo.ufes.scap.Domain.Documento;
 
+@Service("documentoDAO")
 public class JPAdocumentoDAO extends JPABaseDAO<Documento> implements DocumentoDAO {
 
 	@PersistenceContext
