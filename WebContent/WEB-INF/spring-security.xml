@@ -8,23 +8,24 @@
           
   	<global-method-security pre-post-annotations="enabled"/>
     <http auto-config='true'>
-    	<intercept-url pattern="/login" access="permitAll" />
+    	<intercept-url pattern="/loginForm" access="permitAll" />
+    	<intercept-url pattern="/usuario/login" access="permitAll" />
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
         <form-login 
-		   login-page="/login" 
-		   login-processing-url="/applogin"
-		   username-parameter="app_username"
-		   password-parameter="app_password"
+		   login-page="/loginForm" 
+		   login-processing-url="/efetuaLogin"
+		   username-parameter="matricula"
+		   password-parameter="password"
 		   default-target-url="/"/>
 		   <logout 
 		   logout-url="/logout" 
-		   logout-success-url="/ok"/>
+		   logout-success-url="/index"/>
     </http>
 
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="user" password="123" authorities="ROLE_USER" />
+				<user name="123" password="123" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

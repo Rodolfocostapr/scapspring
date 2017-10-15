@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -9,27 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+   
     
-    <!-- Bootstrap core CSS -->
-    <link href="/docs/a/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    
-    <!-- Custom styles for this template -->
-    <link href="/docs/dist/css/signin.css" rel="stylesheet" type="text/css">
-    <!-- <link href="${pageContext.request.contextPath}/docs/table/bootstrap-table.css" rel="stylesheet" type="text/css">-->
-    
-    <!-- Links dos Scripts -->
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script src="/docs/table/bootstrap-table.min.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.5.0/bootstrap-table.min.js"></script>-->
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- Latest compiled and minified Locales -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Custom styles for this template -->
+    <link href="navbar.css" rel="stylesheet">
 </head>
 <body>
-<%session = request.getSession(false);
-%>
+<%session = request.getSession(false);%>
 <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -38,24 +35,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="${linkTo[AfastamentoController].busca}">SCAP</a>
+          <a class="navbar-brand" href="/SCAP/afastamento/bus">SCAP</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="${linkTo[AfastamentoController].busca}">Home</a></li>
-            <c:if test="${professor}">
-            <li><a href="${linkTo[AfastamentoController].formulario}">Cadastrar um afastamento</a></li>
-            </c:if>
-            <li><a href="${linkTo[PessoaController].busca}">Procurar um usuario</a></li>
-            <c:if test="${secretario}">
-            <li><a href="${linkTo[PessoaController].formulario}">Cadastrar um novo usuario</a></li>
-            <li><a href="${linkTo[MandatoController].formulario}">Cadastrar um novo Mandato</a></li>
-            </c:if>
+            <li class="active"><a href="/SCAP/index">Home</a></li>
+            
+            <li><a href="${pageContext.request.contextPath}/afastamento/form">Cadastrar um afastamento</a></li>
+            
+            <li><a href="${pageContext.request.contextPath}/pessoa/bus">Procurar um usuario</a></li>
+           
+            <li><a href="${pageContext.request.contextPath}/pessoa/form">Cadastrar um novo usuario</a></li>
+            <li><a href="${pageContext.request.contextPath}/mandato/form">Cadastrar um novo Mandato</a></li>
+            
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="${linkTo[UsuarioController].logout}">logout</a></li>
+            <li><a href="logout">logout</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 <div class="container" style="padding-bottom: 25px;">

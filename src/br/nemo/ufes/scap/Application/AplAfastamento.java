@@ -10,9 +10,7 @@ import br.nemo.ufes.scap.Domain.TipoAfastamento;
 
 public interface AplAfastamento {
 
-	public void testeRoleProf();
-
-	public void salvar(Afastamento novoAfastamento, TipoAfastamento tipo, Onus onusAfastamento);
+	public void salvar(Afastamento novoAfastamento, Pessoa solicitante, TipoAfastamento tipo, Onus onusAfastamento);
 
 	public List<Afastamento> listaAfastamentos();
 
