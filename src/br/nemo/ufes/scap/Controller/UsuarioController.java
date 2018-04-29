@@ -1,5 +1,7 @@
 package br.nemo.ufes.scap.Controller;
 
+import java.security.Principal;
+
 import javax.ejb.Stateful;
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.nemo.ufes.scap.Application.AplPessoa;
 import br.nemo.ufes.scap.Domain.Pessoa;
 
-@Stateful
 @Controller
 public class UsuarioController {
 
@@ -21,29 +22,30 @@ public class UsuarioController {
 	@Autowired
 	private AplPessoa aplPessoa;
 
-	@RequestMapping("loginForm")
+	@RequestMapping("/loginForm")
 	public String loginForm() {
 		return "usuario/login";
 	}
 
-	@RequestMapping("efetuaLogin")
-	public String logar(Pessoa usuario, HttpSession session, RedirectAttributes rd) {
-		Pessoa pessoa = new Pessoa();
-		pessoa = aplPessoa.buscaMatricula(usuario.getMatricula());
-		if (pessoa != null) {
-			if (pessoa.getPassword().equals(usuario.getPassword())) {
-				usuarioWeb.login(pessoa);
-				session.setAttribute("usuarioWeb", usuarioWeb);
-				session.getAttribute("usuarioWeb");
-				return "index/index";
-			} else {
-				rd.addFlashAttribute("variable", "Matricula ou Senha Incorreta");
-				return "redirect:loginForm";
-			}
-		} else {
-			rd.addFlashAttribute("variable", "Matricula ou Senha Incorreta");
-			return "redirect:loginForm";
-		}
+	@RequestMapping("/efetuaLogin")
+	public void logar() {
+//		Pessoa pessoa = new Pessoa();
+//		System.out.println("Salvou um usuario logado");
+//		pessoa = aplPessoa.buscaMatricula(principal.getName());
+//		if (pessoa != null) {
+//			if (pessoa.getPassword().equals(usuario.getPassword())) {
+//				usuarioWeb.login(pessoa);
+//				session.setAttribute("usuarioWeb", usuarioWeb);
+//				session.getAttribute("usuarioWeb");
+//				return "index/index";
+//			} else {
+////				rd.addFlashAttribute("variable", "Matricula ou Senha Incorreta");
+//				return "redirect:loginForm";
+//			}
+//		} else {
+////			rd.addFlashAttribute("variable", "Matricula ou Senha Incorreta");
+//			return "redirect:loginForm";
+//		}
 	}
 
 	@RequestMapping("logout")

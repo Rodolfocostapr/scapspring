@@ -11,7 +11,7 @@ import br.nemo.ufes.scap.Application.AplPessoa;
 import br.nemo.ufes.scap.Domain.Pessoa;
 
 @Controller
-@RequestMapping(value = "/pessoa/**")
+//@RequestMapping(value = "/pessoa/**")
 public class PessoaController {
 
 	@Autowired

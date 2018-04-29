@@ -16,7 +16,7 @@
 
 <div class="container">
 
-<form:form class="form-horizontal" action="/SCAP/afastamento/salva" method="POST">
+<form:form class="form-horizontal" action="${pageContext.request.contextPath}/afastamento/salva" method="POST">
 <fieldset>
 
 <!-- Form Name -->

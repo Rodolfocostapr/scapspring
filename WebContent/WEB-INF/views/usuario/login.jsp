@@ -30,7 +30,7 @@
 <body>
 <%session = request.getSession(true); %>
 <div class="container">
-		<form class="form-signin" role="form" action="efetuaLogin" method="post">
+		<form class="form-signin" role="form" action="${pageContext.request.contextPath}/efetuaLogin" method="post">
         <h2 class="form-signin-heading">Entre com seu Login</h2>
         <label for="inputEmail" class="sr-only">Matrícula</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="Matrícula" name="matricula"  required autofocus>

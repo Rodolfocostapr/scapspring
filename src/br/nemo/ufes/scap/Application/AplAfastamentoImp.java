@@ -44,7 +44,8 @@ public class AplAfastamentoImp implements AplAfastamento {
 			SituacaoSolic situacao = SituacaoSolic.INICIADO;
 			novoAfastamento.setSituacaoSolicitacao(situacao);
 		}
-		afastamentoDAO.salvar(novoAfastamento);
+		System.out.println("Salvou um afastamento");
+//		afastamentoDAO.salvar(novoAfastamento);
 
 		/*
 		 * List<Pessoa> listaProfessores = pessoaDAO.listaProfessores();
