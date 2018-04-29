@@ -1,10 +1,13 @@
 package br.nemo.ufes.scap.Application;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import br.nemo.ufes.scap.Domain.Afastamento;
@@ -16,6 +19,7 @@ import br.nemo.ufes.scap.Persistency.AfastamentoDAO;
 import br.nemo.ufes.scap.Persistency.PessoaDAO;
 
 @Service
+@PreAuthorize("hasAuthority('PERM_AFAST')")
 public class AplAfastamentoImp implements AplAfastamento {
 
 	@Autowired
@@ -33,6 +37,7 @@ public class AplAfastamentoImp implements AplAfastamento {
 
 	@Transactional
 	@Override
+	@PreAuthorize("hasAuthority('PERM_AFAST')")
 	public void salvar(Afastamento novoAfastamento, Pessoa solicitante, TipoAfastamento tipo, Onus onusAfastamento) {
 		novoAfastamento.setSolicitante(solicitante);
 		novoAfastamento.setTipoAfastamento(tipo);
@@ -45,7 +50,7 @@ public class AplAfastamentoImp implements AplAfastamento {
 			novoAfastamento.setSituacaoSolicitacao(situacao);
 		}
 		System.out.println("Salvou um afastamento");
-//		afastamentoDAO.salvar(novoAfastamento);
+		// afastamentoDAO.salvar(novoAfastamento);
 
 		/*
 		 * List<Pessoa> listaProfessores = pessoaDAO.listaProfessores();
@@ -69,7 +74,9 @@ public class AplAfastamentoImp implements AplAfastamento {
 	@Transactional
 	@Override
 	public List<Afastamento> listaAfastamentos() {
-		return afastamentoDAO.listaAfastamentos();
+		System.out.println("Listou os Afastamentos");
+		List<Afastamento> lista = new ArrayList<Afastamento>();
+		return lista;
 	}
 
 	@Transactional

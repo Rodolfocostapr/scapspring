@@ -7,7 +7,7 @@
           http://www.springframework.org/schema/security/spring-security-4.2.xsd">
           
   	<global-method-security pre-post-annotations="enabled"/>
-    <http auto-config='true'>
+    <http auto-config='true' use-expressions = "true">
     	<intercept-url pattern="/loginForm" access="permitAll" />
     	<intercept-url pattern="/usuario/login" access="permitAll" />
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
@@ -21,13 +21,21 @@
 		   logout-url="/logout" 
 		   logout-success-url="/index"/>
     </http>
+    
+	<beans:bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" destroy-method="close">
+    <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <beans:property name="url" value="jdbc:mysql://localhost:3306/scapspringdb"/>
+    <beans:property name="username" value="dwws"/>
+    <beans:property name="password" value="dwws"/>
+	</beans:bean>
 
 	<authentication-manager>
 		<authentication-provider>
-			<user-service>
-				<user name="123" password="1234" authorities="ROLE_USER" />
-			</user-service>
-		</authentication-provider>
+    		<jdbc-user-service 
+      			data-source-ref="dataSource"
+      			users-by-username-query="select pessoa.matricula, pessoa.password from pessoa where pessoa.matricula=?"
+      			authorities-by-username-query="select username, roleName from role..." />
+ 		</authentication-provider>
 	</authentication-manager>
  
 </beans:beans>
