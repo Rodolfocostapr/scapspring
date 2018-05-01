@@ -19,7 +19,6 @@ import br.nemo.ufes.scap.Persistency.AfastamentoDAO;
 import br.nemo.ufes.scap.Persistency.PessoaDAO;
 
 @Service
-@PreAuthorize("hasAuthority('PERM_AFAST')")
 public class AplAfastamentoImp implements AplAfastamento {
 
 	@Autowired
@@ -37,7 +36,6 @@ public class AplAfastamentoImp implements AplAfastamento {
 
 	@Transactional
 	@Override
-	@PreAuthorize("hasAuthority('PERM_AFAST_SAVE')")
 	public void salvar(Afastamento novoAfastamento, Pessoa solicitante, TipoAfastamento tipo, Onus onusAfastamento) {
 		novoAfastamento.setSolicitante(solicitante);
 		novoAfastamento.setTipoAfastamento(tipo);
