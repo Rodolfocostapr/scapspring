@@ -10,7 +10,7 @@
     <http auto-config='true' use-expressions = "true">
     	<intercept-url pattern="/loginForm" access="permitAll" />
     	<intercept-url pattern="/usuario/login" access="permitAll" />
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/**" access="hasAuthority('PERM_USER')" />
         <form-login 
 		   login-page="/loginForm" 
 		   login-processing-url="/efetuaLogin"
@@ -26,13 +26,16 @@
 		<authentication-provider>
     		 <jdbc-user-service 
       			data-source-ref="dataSource"
-      			users-by-username-query="select pessoa.matricula, pessoa.password from pessoa where pessoa.matricula=?"
-      			authorities-by-username-query="select username, roleName from role..." />
-      			
-      			 		<user-service>
+      			users-by-username-query="select pessoa.matricula, pessoa.password, 1 from pessoa where pessoa.matricula=?"
+      			authorities-by-username-query="SELECT DISTINCT pessoa.matricula, role_permission.permissions_PermissionName
+												FROM pessoa, pessoa_role, role_permission 
+												where pessoa.id_pessoa = pessoa_role.Pessoa_id_pessoa and
+												role_permission.Role_roleName = pessoa_role.roles_roleName and pessoa.matricula = ?" />
+      		<!-- 	
+      		<user-service>
 				<user name="123" password="1234" authorities="ROLE_USER" />
 			</user-service>
-      			
+      			 -->
  		</authentication-provider>
 
 	</authentication-manager>

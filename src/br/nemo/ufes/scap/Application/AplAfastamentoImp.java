@@ -37,7 +37,7 @@ public class AplAfastamentoImp implements AplAfastamento {
 
 	@Transactional
 	@Override
-	@PreAuthorize("hasAuthority('PERM_AFAST')")
+	@PreAuthorize("hasAuthority('PERM_AFAST_SAVE')")
 	public void salvar(Afastamento novoAfastamento, Pessoa solicitante, TipoAfastamento tipo, Onus onusAfastamento) {
 		novoAfastamento.setSolicitante(solicitante);
 		novoAfastamento.setTipoAfastamento(tipo);
